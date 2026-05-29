@@ -84,17 +84,9 @@ function LandingPage() {
 
           <motion.div initial={{ opacity: 0, x: 60 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.9, delay: 0.3, ease: 'easeOut' }} className="relative z-10">
             {/* Float wrapper — independent of the entrance animation */}
-            <motion.div
-              animate={{ y: [0, -14, 0] }}
-              transition={{ duration: 4.5, repeat: Infinity, ease: 'easeInOut', delay: 1 }}
-              className="relative"
-            >
+            <div className="relative float" style={{ animationDelay: '1s' }}>
               {/* Glow that pulses with the float */}
-              <motion.div
-                animate={{ opacity: [0.6, 1, 0.6], scale: [0.95, 1.05, 0.95] }}
-                transition={{ duration: 4.5, repeat: Infinity, ease: 'easeInOut', delay: 1 }}
-                className="absolute inset-0 rounded-3xl bg-violet-500/10 blur-3xl"
-              />
+              <div className="absolute inset-0 rounded-3xl bg-violet-500/10 blur-3xl glow-pulse" style={{ animationDelay: '1s' }} />
               <div className="relative overflow-hidden rounded-3xl border border-white/10 glow-card gradient-border-card shimmer">
                 <motion.div aria-hidden className="absolute inset-y-0 -left-1/2 w-2/3 bg-gradient-to-r from-transparent via-white/6 to-transparent scan-sweep" />
                 <img src={heroDashboard} alt="AI detection dashboard" className="w-full h-full object-cover opacity-90 rounded-3xl" />
@@ -110,33 +102,26 @@ function LandingPage() {
                     {/* Filled bar */}
                     <div className="h-full rounded-full bg-gradient-to-r from-violet-500 to-red-400" style={{ width: '98.7%' }} />
                     {/* Continuous shimmer sweep left → right */}
-                    <motion.div
+                    <div
                       aria-hidden
-                      animate={{ x: ['-100%', '500%'] }}
-                      transition={{ duration: 1.8, repeat: Infinity, ease: 'easeInOut', repeatDelay: 0.4 }}
-                      className="absolute inset-y-0 w-1/4 bg-gradient-to-r from-transparent via-white/60 to-transparent"
+                      className="absolute inset-y-0 w-1/4 bg-gradient-to-r from-transparent via-white/60 to-transparent sweep-fast"
                     />
                   </div>
                   <p className="text-right text-xs text-slate-500 mt-1">98.7% confidence</p>
                 </div>
               </div>
-            </motion.div>
+            </div>
           </motion.div>
         </div>
       </section>
 
       {/* ── MARQUEE ── */}
       <div className="border-y border-white/6 py-4 overflow-hidden bg-white/2">
-        <motion.div
-          animate={{ x: ['0%', '-50%'] }}
-          transition={{ duration: 22, repeat: Infinity, ease: 'linear' }}
-          className="flex gap-12 w-max"
-          style={{ willChange: 'transform' }}
-        >
+        <div className="flex gap-12 w-max marquee-track">
           {[...MARQUEE_ITEMS, ...MARQUEE_ITEMS].map((item, i) => (
             <span key={i} className="text-xs uppercase tracking-[0.28em] text-slate-500 whitespace-nowrap">{item}</span>
           ))}
-        </motion.div>
+        </div>
       </div>
 
       {/* ── STATS ── */}
