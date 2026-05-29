@@ -10,10 +10,16 @@ export default defineConfig({
   build: {
     rollupOptions: {
       output: {
-        manualChunks: {
-          'vendor-motion': ['framer-motion'],
-          'vendor-icons': ['lucide-react'],
-          'vendor-router': ['@tanstack/react-router'],
+        manualChunks: (id) => {
+          if (id.includes('framer-motion')) {
+            return 'vendor-motion';
+          }
+          if (id.includes('lucide-react')) {
+            return 'vendor-icons';
+          }
+          if (id.includes('@tanstack/react-router')) {
+            return 'vendor-router';
+          }
         },
       },
     },
