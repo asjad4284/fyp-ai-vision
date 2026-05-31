@@ -47,9 +47,6 @@ function PricingPage() {
             <Link to="/detect" className="rounded-full bg-white px-7 py-2.5 text-sm font-semibold text-black hover:bg-neutral-100 transition-all hover:scale-105">
               Try for Free
             </Link>
-            <Link to="/api" className="rounded-full border border-white/15 bg-white/5 px-7 py-2.5 text-sm font-semibold text-white hover:bg-white/10 transition-all">
-              View API Docs
-            </Link>
           </div>
         </motion.div>
       </div>
