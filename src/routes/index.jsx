@@ -141,7 +141,7 @@ function LandingPage() {
         </div>
         <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.1 }} transition={{ duration: 0.6 }}>
           <p className="text-xs uppercase tracking-[0.3em] text-violet-400 mb-3">Capabilities</p>
-          <h2 id="analysis" className="text-3xl font-bold text-gradient sm:text-4xl">Advanced Deep Learning Analysis</h2>
+          <h2 className="text-3xl font-bold text-gradient sm:text-4xl">Advanced Deep Learning Analysis</h2>
           <p className="mt-4 max-w-xl text-slate-400">Our models surface manipulation signals in milliseconds across image and audio modalities.</p>
         </motion.div>
         <motion.div variants={stagger} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.05 }} className="mt-12 grid gap-5 md:grid-cols-3 md:auto-rows-fr">
@@ -158,7 +158,7 @@ function LandingPage() {
       </section>
 
       {/* ── HOW IT WORKS ── */}
-      <section className="mx-auto max-w-7xl px-6 py-20">
+      <section id="analysis" className="mx-auto max-w-7xl px-6 py-20">
         <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.1 }} className="text-center mb-14">
           <p className="text-xs uppercase tracking-[0.3em] text-violet-400 mb-3">Process</p>
           <h2 className="text-3xl font-bold text-gradient sm:text-4xl">How It Works</h2>

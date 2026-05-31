@@ -1,4 +1,4 @@
-import { createRootRoute, Outlet, Link } from '@tanstack/react-router';
+import { createRootRoute, Outlet, Link, useNavigate, useRouterState } from '@tanstack/react-router';
 import { useState, useEffect, useCallback } from 'react';
 import { motion } from 'framer-motion';
 import { Menu } from 'lucide-react';
@@ -67,6 +67,21 @@ function RootLayout() {
 
   const closeMobile = useCallback(() => setMobileOpen(false), []);
   const openMobile = useCallback(() => setMobileOpen(true), []);
+  const navigate = useNavigate();
+  const pathname = useRouterState({ select: s => s.location.pathname });
+
+  const scrollToSection = useCallback((id) => (e) => {
+    e.preventDefault();
+    const doScroll = () => {
+      const el = document.getElementById(id);
+      if (el) el.scrollIntoView({ behavior: 'smooth' });
+    };
+    if (pathname === '/') {
+      doScroll();
+    } else {
+      navigate({ to: '/' }).then(() => setTimeout(doScroll, 100));
+    }
+  }, [pathname, navigate]);
 
   return (
     <div className="min-h-screen bg-[#030712] text-white">
@@ -89,8 +104,8 @@ function RootLayout() {
           </Link>
 
           <nav className="hidden md:flex items-center gap-8 text-sm text-slate-400">
-            <a href="#features" className="hover:text-white transition-colors duration-200">Features</a>
-            <a href="#analysis" className="hover:text-white transition-colors duration-200">Analysis</a>
+            <button onClick={scrollToSection('features')} className="hover:text-white transition-colors duration-200 cursor-pointer">Features</button>
+            <button onClick={scrollToSection('analysis')} className="hover:text-white transition-colors duration-200 cursor-pointer">Analysis</button>
             <Link
               to="/pricing"
               className="hover:text-white transition-colors duration-200"

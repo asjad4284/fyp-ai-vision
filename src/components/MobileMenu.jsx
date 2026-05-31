@@ -1,14 +1,30 @@
 import { motion, AnimatePresence } from 'framer-motion';
-import { Link } from '@tanstack/react-router';
+import { Link, useNavigate, useRouterState } from '@tanstack/react-router';
+import { useCallback } from 'react';
 
 // Anchor links stay as <a> (same-page sections on /), route links use TanStack <Link>
 const LINKS = [
-  { label: 'Features', href: '#features', isRoute: false },
-  { label: 'Analysis',  href: '#analysis',  isRoute: false },
+  { label: 'Features', sectionId: 'features', isRoute: false },
+  { label: 'Analysis',  sectionId: 'analysis',  isRoute: false },
   { label: 'Pricing',   href: '/pricing',    isRoute: true },
 ];
 
 export default function MobileMenu({ open, onClose }) {
+  const navigate = useNavigate();
+  const pathname = useRouterState({ select: s => s.location.pathname });
+
+  const scrollToSection = useCallback((id) => () => {
+    onClose();
+    const doScroll = () => {
+      const el = document.getElementById(id);
+      if (el) el.scrollIntoView({ behavior: 'smooth' });
+    };
+    if (pathname === '/') {
+      doScroll();
+    } else {
+      navigate({ to: '/' }).then(() => setTimeout(doScroll, 100));
+    }
+  }, [pathname, navigate, onClose]);
   return (
     <AnimatePresence>
       {open && (
@@ -25,7 +41,7 @@ export default function MobileMenu({ open, onClose }) {
           </div>
 
           <nav className="flex flex-col gap-1 px-6 py-8">
-            {LINKS.map(({ label, href, isRoute }, i) =>
+            {LINKS.map(({ label, href, sectionId, isRoute }, i) =>
               isRoute ? (
                 <Link
                   key={label}
@@ -43,11 +59,10 @@ export default function MobileMenu({ open, onClose }) {
                   </motion.span>
                 </Link>
               ) : (
-                <a
+                <button
                   key={label}
-                  href={href}
-                  onClick={onClose}
-                  className="py-4 text-2xl font-semibold text-slate-300 hover:text-white border-b border-white/6 transition-colors block"
+                  onClick={scrollToSection(sectionId)}
+                  className="w-full text-left py-4 text-2xl font-semibold text-slate-300 hover:text-white border-b border-white/6 transition-colors block"
                 >
                   <motion.span
                     initial={{ opacity: 0, x: -20 }}
@@ -57,7 +72,7 @@ export default function MobileMenu({ open, onClose }) {
                   >
                     {label}
                   </motion.span>
-                </a>
+                </button>
               )
             )}
           </nav>
