@@ -89,21 +89,14 @@ function RootLayout() {
           </Link>
 
           <nav className="hidden md:flex items-center gap-8 text-sm text-slate-400">
-            <a href="/#features" className="hover:text-white transition-colors duration-200">Features</a>
-            <a href="/#analysis" className="hover:text-white transition-colors duration-200">Analysis</a>
+            <a href="#features" className="hover:text-white transition-colors duration-200">Features</a>
+            <a href="#analysis" className="hover:text-white transition-colors duration-200">Analysis</a>
             <Link
               to="/pricing"
               className="hover:text-white transition-colors duration-200"
               activeProps={{ className: 'text-white' }}
             >
               Pricing
-            </Link>
-            <Link
-              to="/api"
-              className="hover:text-white transition-colors duration-200"
-              activeProps={{ className: 'text-white' }}
-            >
-              API
             </Link>
           </nav>
 
@@ -139,7 +132,6 @@ function RootLayout() {
             <a href="#" className="hover:text-white transition-colors">Privacy</a>
             <a href="#" className="hover:text-white transition-colors">Security</a>
             <a href="#" className="hover:text-white transition-colors">Terms</a>
-            <Link to="/api" className="hover:text-white transition-colors">API Docs</Link>
           </div>
         </div>
       </footer>

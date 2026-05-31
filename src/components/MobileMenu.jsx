@@ -3,10 +3,9 @@ import { Link } from '@tanstack/react-router';
 
 // Anchor links stay as <a> (same-page sections on /), route links use TanStack <Link>
 const LINKS = [
-  { label: 'Features', href: '/#features', isRoute: false },
-  { label: 'Analysis',  href: '/#analysis',  isRoute: false },
+  { label: 'Features', href: '#features', isRoute: false },
+  { label: 'Analysis',  href: '#analysis',  isRoute: false },
   { label: 'Pricing',   href: '/pricing',    isRoute: true },
-  { label: 'API',       href: '/api',        isRoute: true },
 ];
 
 export default function MobileMenu({ open, onClose }) {

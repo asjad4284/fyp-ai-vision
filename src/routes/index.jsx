@@ -58,12 +58,6 @@ function LandingPage() {
               >
                 Start Detecting <ChevronRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
               </Link>
-              <Link
-                to="/api"
-                className="rounded-full border border-white/15 bg-white/5 px-7 py-3 text-sm font-semibold text-white hover:bg-white/10 hover:border-white/25 transition-all"
-              >
-                Read the Docs
-              </Link>
             </motion.div>
             <motion.div variants={fadeUp} transition={{ duration: 0.6, delay: 0.4 }} className="mt-8 flex flex-wrap gap-3">
               {['SOC 2', 'ISO 27001', 'GDPR Ready'].map(b => (
