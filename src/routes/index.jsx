@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from '@tanstack/react-router';
-import { motion } from 'framer-motion';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import { ScanEye, AudioLines, Zap, ChevronRight, CheckCircle2, Fingerprint, Lock, Globe } from 'lucide-react';
 import heroDashboard from '../assets/hero_dashboard.png';
 import faceScan from '../assets/face_scan.png';
@@ -30,6 +30,9 @@ const STEPS = [
 ];
 
 function LandingPage() {
+  const { scrollYProgress } = useScroll();
+  const parallaxY = useTransform(scrollYProgress, [0, 1], [0, -50]);
+
   return (
     <>
       {/* ── HERO ── */}
@@ -41,7 +44,7 @@ function LandingPage() {
         </div>
         <div className="relative mx-auto grid max-w-7xl items-center gap-16 px-6 py-24 lg:grid-cols-2">
           <motion.div variants={stagger} initial="hidden" animate="visible" className="z-10">
-            <motion.div variants={fadeUp} transition={{ duration: 0.6 }} className="mb-6 inline-flex items-center gap-2 rounded-full border border-violet-500/30 bg-violet-500/10 px-4 py-1.5 text-xs tracking-widest text-violet-300 uppercase">
+            <motion.div variants={fadeUp} transition={{ duration: 0.6 }} className="mb-6 inline-flex items-center gap-2 rounded-full border border-violet-500/30 bg-violet-500/10 px-4 py-1.5 text-xs tracking-[0.3em] text-violet-300 uppercase">
               <ScanEye className="h-3.5 w-3.5" /> Deepfake Defense Suite
             </motion.div>
             <motion.h1 variants={fadeUp} transition={{ duration: 0.7, delay: 0.1 }} className="text-5xl font-bold leading-[1.1] sm:text-6xl lg:text-7xl">
@@ -52,12 +55,18 @@ function LandingPage() {
               Multi-modal deep learning evaluates synthetic images and audio with forensic-grade accuracy — producing heatmaps, waveform signatures, and instant verdicts.
             </motion.p>
             <motion.div variants={fadeUp} transition={{ duration: 0.6, delay: 0.3 }} className="mt-8 flex flex-wrap gap-4">
-              <Link
-                to="/detect"
-                className="group flex items-center gap-2 rounded-full bg-white px-7 py-3 text-sm font-semibold text-black hover:bg-neutral-100 transition-all hover:scale-105 active:scale-95 shadow-lg shadow-white/10"
+              <motion.div
+                animate={{ boxShadow: ['0 0 20px rgba(255,255,255,0.1)', '0 0 40px rgba(255,255,255,0.2)', '0 0 20px rgba(255,255,255,0.1)'] }}
+                transition={{ duration: 2.5, repeat: Infinity, ease: 'easeInOut' }}
+                className="rounded-full"
               >
-                Start Detecting <ChevronRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
-              </Link>
+                <Link
+                  to="/detect"
+                  className="group flex items-center gap-2 rounded-full bg-white px-7 py-3 text-sm font-semibold text-black hover:bg-neutral-100 transition-all hover:scale-105 active:scale-95 shadow-lg shadow-white/10"
+                >
+                  Start Detecting <ChevronRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                </Link>
+              </motion.div>
             </motion.div>
             <motion.div variants={fadeUp} transition={{ duration: 0.6, delay: 0.4 }} className="mt-8 flex flex-wrap gap-3">
               {['SOC 2', 'ISO 27001', 'GDPR Ready'].map(b => (
@@ -120,11 +129,13 @@ function LandingPage() {
 
       {/* ── STATS ── */}
       <section className="mx-auto max-w-7xl px-6 py-20">
+        <div className="mx-auto mb-10 max-w-xs h-px bg-gradient-to-r from-transparent via-violet-500/30 to-transparent" />
+        <motion.p initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5 }} className="text-center text-xs uppercase tracking-[0.3em] text-violet-400 mb-8">By the Numbers</motion.p>
         <motion.div variants={stagger} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.1 }} className="grid grid-cols-2 gap-6 md:grid-cols-4">
           {STATS.map(({ to, suffix, label }) => (
             <motion.div key={label} variants={fadeUp} transition={{ duration: 0.5 }} className="rounded-2xl border border-white/8 bg-white/3 p-6 text-center gradient-border-card">
               <p className="text-4xl font-bold text-gradient-accent"><Counter to={to} suffix={suffix} /></p>
-              <p className="mt-2 text-xs text-slate-500 uppercase tracking-widest">{label}</p>
+              <p className="mt-2 text-xs text-slate-500 uppercase tracking-[0.3em]">{label}</p>
             </motion.div>
           ))}
         </motion.div>
@@ -171,7 +182,7 @@ function LandingPage() {
                 <span className="absolute -top-2 -right-2 text-[10px] font-bold text-violet-400 bg-[#030712] px-1.5 rounded-full border border-violet-500/30">{n}</span>
               </div>
               <h3 className="text-base font-semibold text-white">{title}</h3>
-              <p className="mt-2 text-sm text-slate-500 leading-relaxed">{desc}</p>
+              <p className="mt-2 text-sm text-slate-400 leading-relaxed">{desc}</p>
             </motion.div>
           ))}
         </motion.div>
@@ -181,7 +192,7 @@ function LandingPage() {
       <section className="mx-auto max-w-7xl px-6 py-10 pb-20">
         <motion.div initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.05 }} transition={{ duration: 0.7 }} className="relative overflow-hidden rounded-3xl border border-white/8 gradient-border-card">
           <div className="absolute inset-0 bg-gradient-to-r from-[#030712] via-transparent to-[#030712] z-10" />
-          <img src={faceScan} alt="AI face scan visualization" className="w-full h-72 sm:h-96 object-cover opacity-50" />
+          <motion.img src={faceScan} alt="AI face scan visualization" className="w-full h-72 sm:h-96 object-cover opacity-50" style={{ y: parallaxY }} />
           <div className="absolute inset-0 z-20 flex flex-col items-center justify-center text-center px-6">
             <motion.p animate={{ opacity: [0.6, 1, 0.6] }} transition={{ duration: 3, repeat: Infinity }} className="text-xs uppercase tracking-[0.3em] text-violet-400 mb-3">Neural Analysis Active</motion.p>
             <h2 className="text-3xl sm:text-4xl font-bold text-gradient max-w-lg">Every pixel tells a story. We read them all.</h2>

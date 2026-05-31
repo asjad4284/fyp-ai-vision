@@ -129,10 +129,10 @@ const HorizontalScroll = memo(function HorizontalScroll() {
   const prev = useCallback(() => setActive(a => (a - 1 + total) % total), [total]);
   const next = useCallback(() => setActive(a => (a + 1) % total), [total]);
 
-  // Auto-advance every 3s unless paused
+  // Auto-advance every 2s unless paused
   useEffect(() => {
     if (paused) return;
-    const t = setInterval(next, 3000);
+    const t = setInterval(next, 2000);
     return () => clearInterval(t);
   }, [paused, next]);
 

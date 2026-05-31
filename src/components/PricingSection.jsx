@@ -45,7 +45,7 @@ export default function PricingSection({ hideHeader = false }) {
             whileHover={{ y: -6 }}
             className={`relative flex flex-col rounded-2xl border p-7 gradient-border-card transition-all duration-300 ${
               highlight
-                ? 'border-violet-500/40 bg-violet-950/30 glow-purple'
+                ? 'border-violet-500/40 bg-violet-950/30 glow-purple-pulse'
                 : 'border-white/8 bg-neutral-900/60 glow-card'
             }`}>
             {highlight && (
@@ -70,7 +70,7 @@ export default function PricingSection({ hideHeader = false }) {
                 </li>
               ))}
             </ul>
-            <button className={`w-full rounded-full py-3 text-sm font-semibold transition-all hover:scale-105 active:scale-95 ${
+            <button className={`w-full rounded-full py-3 text-sm font-semibold transition-all hover:scale-[1.03] active:scale-[0.97] ${
               highlight
                 ? 'bg-white text-black hover:bg-neutral-100 shadow-lg shadow-white/10'
                 : 'border border-white/15 bg-white/5 text-white hover:bg-white/10'

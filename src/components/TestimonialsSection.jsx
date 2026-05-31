@@ -30,8 +30,9 @@ export default function TestimonialsSection() {
         viewport={{ once: true, amount: 0.05 }} className="grid gap-6 md:grid-cols-3">
         {TESTIMONIALS.map(({ quote, name, role, initials, color }) => (
           <motion.div key={name} variants={fadeUp} transition={{ duration: 0.5 }}
-            whileHover={{ y: -5 }}
+            whileHover={{ y: -6 }}
             className="flex flex-col rounded-2xl border border-white/8 bg-white/3 p-7 gradient-border-card glow-card transition-all duration-300">
+            <span className="text-4xl text-violet-500/20 font-serif leading-none">&ldquo;</span>
             <p className="text-sm text-slate-300 leading-relaxed flex-1 italic">"{quote}"</p>
             <div className="mt-6 flex items-center gap-3">
               <div className={`flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-gradient-to-br ${color} text-xs font-bold text-white`}>

@@ -147,10 +147,11 @@ function DetectPage() {
               onDragLeave={() => setDragging(false)}
               onDrop={onDrop}
               onClick={() => !file && inputRef.current?.click()}
+              style={dragging ? { boxShadow: '0 0 40px rgba(139,92,246,0.2)' } : undefined}
               className={`relative rounded-2xl border-2 border-dashed p-8 text-center cursor-pointer transition-all duration-300 ${
-                dragging ? 'border-violet-400 bg-violet-500/10 scale-[1.02]' :
+                dragging ? 'border-violet-400 bg-violet-500/15 scale-[1.03]' :
                 file ? 'border-white/15 bg-white/3 cursor-default' :
-                'border-white/12 bg-white/2 hover:border-violet-500/40 hover:bg-violet-500/5'
+                'border-white/15 bg-white/2 hover:border-white/25 hover:bg-white/4 shimmer'
               }`}
             >
               <input
@@ -206,7 +207,7 @@ function DetectPage() {
                   </motion.div>
                 ) : (
                   <motion.div key="idle" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="py-6 space-y-3">
-                    <motion.div animate={{ y: [0, -6, 0] }} transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }}>
+                    <motion.div animate={{ y: dragging ? [0, -10, 0] : [0, -6, 0] }} transition={{ duration: dragging ? 1.5 : 3, repeat: Infinity, ease: 'easeInOut' }}>
                       <Upload className="h-10 w-10 text-slate-600 mx-auto" />
                     </motion.div>
                     <p className="text-sm font-medium text-slate-300">Drop your file here</p>
@@ -265,6 +266,12 @@ function DetectPage() {
                   </motion.div>
                   <p className="text-slate-600 text-sm">Upload a file to see the analysis results</p>
                   <p className="text-slate-700 text-xs mt-2">Confidence scores, model breakdown, and heatmap visualization will appear here</p>
+                  {/* Skeleton hint lines */}
+                  <div className="mt-8 space-y-3 w-full max-w-xs">
+                    <div className="h-2 rounded-full bg-white/5 animate-pulse" />
+                    <div className="h-2 rounded-full bg-white/4 animate-pulse w-4/5" />
+                    <div className="h-2 rounded-full bg-white/3 animate-pulse w-3/5" />
+                  </div>
                 </motion.div>
               ) : (
                 <motion.div

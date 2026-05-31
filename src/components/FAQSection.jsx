@@ -22,13 +22,13 @@ export default function FAQSection() {
         {FAQS.map(({ q, a }, i) => (
           <motion.div key={i} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.05 }} transition={{ delay: i * 0.06 }}
-            className="rounded-2xl border border-white/8 bg-white/3 overflow-hidden gradient-border-card">
+            className={`rounded-2xl border border-white/8 bg-white/3 overflow-hidden gradient-border-card transition-all duration-300 ${open === i ? 'border-l-2 border-l-violet-500' : ''}`}>
             <button
               className="w-full flex items-center justify-between px-6 py-5 text-left"
               onClick={() => setOpen(open === i ? null : i)}
               aria-expanded={open === i}>
               <span className="text-sm font-medium text-white pr-4">{q}</span>
-              <motion.span animate={{ rotate: open === i ? 45 : 0 }} transition={{ duration: 0.22 }}
+              <motion.span animate={{ rotate: open === i ? 135 : 0 }} transition={{ duration: 0.3, ease: 'easeInOut' }}
                 className="text-violet-400 text-2xl leading-none flex-shrink-0 font-light">+</motion.span>
             </button>
             <AnimatePresence initial={false}>
