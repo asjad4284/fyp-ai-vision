@@ -13,23 +13,36 @@ export default function FAQSection() {
   const [open, setOpen] = useState(null);
   return (
     <section id="faq" className="mx-auto max-w-3xl px-6 py-20">
-      <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.1 }} className="text-center mb-12">
-        <p className="text-xs uppercase tracking-[0.3em] text-violet-400 mb-3">FAQ</p>
-        <h2 className="text-3xl font-bold text-gradient sm:text-4xl">Frequently Asked</h2>
+      <motion.div
+        initial={{ opacity: 0, y: 24 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.1 }}
+        className="mb-12"
+      >
+        <p className="section-label mb-4">FAQ</p>
+        <h2 className="text-3xl font-bold text-[#1c1917] sm:text-4xl">Frequently Asked</h2>
       </motion.div>
-      <div className="space-y-3">
+
+      <div className="divide-y divide-stone-300 border-t border-b border-stone-300">
         {FAQS.map(({ q, a }, i) => (
-          <motion.div key={i} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.05 }} transition={{ delay: i * 0.06 }}
-            className={`rounded-2xl border border-white/8 bg-white/3 overflow-hidden gradient-border-card transition-all duration-300 ${open === i ? 'border-l-2 border-l-violet-500' : ''}`}>
+          <motion.div
+            key={i}
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.05 }}
+            transition={{ delay: i * 0.06 }}
+          >
             <button
-              className="w-full flex items-center justify-between px-6 py-5 text-left"
+              className="w-full flex items-center justify-between py-5 text-left cursor-pointer"
               onClick={() => setOpen(open === i ? null : i)}
-              aria-expanded={open === i}>
-              <span className="text-sm font-medium text-white pr-4">{q}</span>
-              <motion.span animate={{ rotate: open === i ? 135 : 0 }} transition={{ duration: 0.3, ease: 'easeInOut' }}
-                className="text-violet-400 text-2xl leading-none flex-shrink-0 font-light">+</motion.span>
+              aria-expanded={open === i}
+            >
+              <span className="text-sm font-medium text-[#1c1917] pr-8" style={{ fontFamily: 'Inter, sans-serif' }}>{q}</span>
+              <motion.span
+                animate={{ rotate: open === i ? 45 : 0 }}
+                transition={{ duration: 0.25, ease: 'easeInOut' }}
+                className="text-[#78716c] text-2xl leading-none flex-shrink-0 font-light"
+              >+</motion.span>
             </button>
             <AnimatePresence initial={false}>
               {open === i && (
@@ -37,8 +50,9 @@ export default function FAQSection() {
                   initial={{ height: 0, opacity: 0 }}
                   animate={{ height: 'auto', opacity: 1 }}
                   exit={{ height: 0, opacity: 0 }}
-                  transition={{ duration: 0.28, ease: 'easeInOut' }}>
-                  <p className="px-6 pb-6 text-sm text-slate-400 leading-relaxed">{a}</p>
+                  transition={{ duration: 0.25, ease: 'easeInOut' }}
+                >
+                  <p className="pb-5 text-sm text-[#57534e] leading-relaxed" style={{ fontFamily: 'Inter, sans-serif' }}>{a}</p>
                 </motion.div>
               )}
             </AnimatePresence>

@@ -2,11 +2,10 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Link, useNavigate, useRouterState } from '@tanstack/react-router';
 import { useCallback } from 'react';
 
-// Anchor links stay as <a> (same-page sections on /), route links use TanStack <Link>
 const LINKS = [
   { label: 'Features', sectionId: 'features', isRoute: false },
   { label: 'Analysis',  sectionId: 'analysis',  isRoute: false },
-  { label: 'Pricing',   href: '/pricing',    isRoute: true },
+  { label: 'Pricing',   href: '/pricing',       isRoute: true  },
 ];
 
 export default function MobileMenu({ open, onClose }) {
@@ -19,12 +18,10 @@ export default function MobileMenu({ open, onClose }) {
       const el = document.getElementById(id);
       if (el) el.scrollIntoView({ behavior: 'smooth' });
     };
-    if (pathname === '/') {
-      doScroll();
-    } else {
-      navigate({ to: '/' }).then(() => setTimeout(doScroll, 100));
-    }
+    if (pathname === '/') { doScroll(); }
+    else { navigate({ to: '/' }).then(() => setTimeout(doScroll, 100)); }
   }, [pathname, navigate, onClose]);
+
   return (
     <AnimatePresence>
       {open && (
@@ -32,44 +29,33 @@ export default function MobileMenu({ open, onClose }) {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          transition={{ duration: 0.25 }}
-          className="fixed inset-0 z-[80] flex flex-col bg-[#030712]/97 backdrop-blur-2xl md:hidden"
+          transition={{ duration: 0.2 }}
+          className="fixed inset-0 z-[80] flex flex-col bg-[#f4f3ee] md:hidden"
         >
-          <div className="flex items-center justify-between px-6 py-5 border-b border-white/8">
-            <span className="text-base font-semibold">AI Media Authenticator</span>
-            <button onClick={onClose} aria-label="Close menu" className="text-slate-400 hover:text-white transition-colors text-2xl leading-none">✕</button>
+          <div className="flex items-center justify-between px-6 py-5 border-b border-stone-300">
+            <span className="text-base font-bold text-[#1c1917]" style={{ fontFamily: 'Inter, sans-serif' }}>DETECTAI</span>
+            <button onClick={onClose} aria-label="Close menu" className="text-stone-500 hover:text-[#1c1917] transition-colors text-2xl leading-none">✕</button>
           </div>
 
-          <nav className="flex flex-col gap-1 px-6 py-8">
+          <nav className="flex flex-col px-6 py-6">
             {LINKS.map(({ label, href, sectionId, isRoute }, i) =>
               isRoute ? (
                 <Link
-                  key={label}
-                  to={href}
-                  onClick={onClose}
-                  className="py-4 text-2xl font-semibold text-slate-300 hover:text-white border-b border-white/6 transition-colors block"
+                  key={label} to={href} onClick={onClose}
+                  className="py-4 text-2xl font-bold text-[#1c1917] border-b border-stone-300 block"
+                  style={{ fontFamily: "'Playfair Display', serif" }}
                 >
-                  <motion.span
-                    initial={{ opacity: 0, x: -20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: i * 0.07 }}
-                    className="block"
-                  >
+                  <motion.span initial={{ opacity: 0, x: -16 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: i * 0.07 }} className="block">
                     {label}
                   </motion.span>
                 </Link>
               ) : (
                 <button
-                  key={label}
-                  onClick={scrollToSection(sectionId)}
-                  className="w-full text-left py-4 text-2xl font-semibold text-slate-300 hover:text-white border-b border-white/6 transition-colors block"
+                  key={label} onClick={scrollToSection(sectionId)}
+                  className="w-full text-left py-4 text-2xl font-bold text-[#1c1917] border-b border-stone-300"
+                  style={{ fontFamily: "'Playfair Display', serif" }}
                 >
-                  <motion.span
-                    initial={{ opacity: 0, x: -20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: i * 0.07 }}
-                    className="block"
-                  >
+                  <motion.span initial={{ opacity: 0, x: -16 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: i * 0.07 }} className="block">
                     {label}
                   </motion.span>
                 </button>
@@ -78,21 +64,13 @@ export default function MobileMenu({ open, onClose }) {
           </nav>
 
           <div className="px-6 mt-auto pb-12 space-y-3">
-            <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.35 }}>
-              <Link
-                to="/detect"
-                onClick={onClose}
-                className="block w-full rounded-full bg-white py-3.5 text-base font-semibold text-black hover:bg-neutral-200 transition-colors text-center"
-              >
+            <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 }}>
+              <Link to="/detect" onClick={onClose} className="btn-primary w-full justify-center">
                 Launch App
               </Link>
             </motion.div>
-            <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.42 }}>
-              <Link
-                to="/pricing"
-                onClick={onClose}
-                className="block w-full rounded-full border border-white/15 bg-white/5 py-3.5 text-base font-semibold text-white hover:bg-white/10 transition-colors text-center"
-              >
+            <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.38 }}>
+              <Link to="/pricing" onClick={onClose} className="btn-secondary w-full justify-center">
                 View Pricing
               </Link>
             </motion.div>
