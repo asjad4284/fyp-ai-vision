@@ -401,15 +401,14 @@ function DetectPage() {
                           }
                         </div>
                         <div>
-                          <p className="text-xs text-[#78716c] uppercase tracking-widest mb-1" style={{ fontFamily: 'Inter, sans-serif' }}>Verdict</p>
-                          <p className={`text-2xl font-bold ${result.isSynth ? 'text-red-700' : 'text-green-700'}`} style={{ fontFamily: "'Playfair Display', serif" }}>
+                          <p className={`text-2xl font-bold ${result.isSynth ? 'text-red-700' : 'text-green-700'}`}>
                             {result.verdict}
                           </p>
                         </div>
                       </div>
                       <div className="text-right flex-shrink-0">
                         <p className="text-xs text-[#78716c] mb-1" style={{ fontFamily: 'Inter, sans-serif' }}>Confidence</p>
-                        <p className="text-2xl font-bold text-[#1c1917]" style={{ fontFamily: "'Playfair Display', serif" }}>{result.confidence}%</p>
+                        <p className="text-2xl font-bold text-[#1c1917]">{result.confidence}%</p>
                         <p className="text-[10px] text-[#a8a29e] mt-1" style={{ fontFamily: 'Inter, sans-serif' }}>{result.inferenceMs}ms inference</p>
                       </div>
                     </div>
@@ -432,7 +431,7 @@ function DetectPage() {
                     ].map(({ icon: Icon, label, value }) => (
                       <div key={label} className="rounded-xl border border-stone-300 bg-stone-200 p-4 text-center">
                         <Icon className="h-4 w-4 mx-auto mb-2 text-[#78716c]" />
-                        <p className="text-lg font-bold text-[#1c1917]" style={{ fontFamily: "'Playfair Display', serif" }}>{value}</p>
+                        <p className="text-lg font-bold text-[#1c1917]">{value}</p>
                         <p className="text-[10px] text-[#78716c] mt-0.5" style={{ fontFamily: 'Inter, sans-serif' }}>{label}</p>
                       </div>
                     ))}
@@ -488,7 +487,7 @@ function DetectPage() {
                 className="w-full max-w-md bg-[#e8e6e1] border border-stone-300 rounded-xl p-6 shadow-lg"
               >
                 <div className="flex justify-between items-start mb-4">
-                  <h3 className="text-lg font-bold text-[#1c1917]" style={{ fontFamily: "'Playfair Display', serif" }}>
+                  <h3 className="text-lg font-bold text-[#1c1917]">
                     Dispute Result / Log Feedback
                   </h3>
                   <button 
@@ -568,7 +567,7 @@ function DetectPage() {
         >
           <div className="flex justify-between items-center mb-6">
             <div>
-              <h2 className="text-2xl font-bold text-[#1c1917]" style={{ fontFamily: "'Playfair Display', serif" }}>
+              <h2 className="text-2xl font-bold text-[#1c1917]">
                 Authenticity Scan Logs
               </h2>
             </div>

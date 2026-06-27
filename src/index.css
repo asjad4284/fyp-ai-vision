@@ -1,5 +1,5 @@
 @import "tailwindcss";
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Inter:wght@300;400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;1,400&family=Inter:wght@400;500;600;700;800&display=swap');
 
 @layer base {
   * { box-sizing: border-box; }
@@ -11,9 +11,13 @@
     font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
     -webkit-font-smoothing: antialiased;
   }
-  h1, h2, h3 {
-    font-family: "Playfair Display", "Georgia", serif;
+  h1, h2, h3, h4, h5, h6 {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
     font-weight: 700;
+    letter-spacing: -0.02em;
+  }
+  p, .font-serif-body {
+    font-family: "Lora", "Georgia", serif;
   }
   ::-webkit-scrollbar { width: 3px; }
   ::-webkit-scrollbar-track { background: #f4f3ee; }

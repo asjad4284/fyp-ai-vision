@@ -72,7 +72,7 @@ export default function PricingSection({ hideHeader = false }) {
             <p className={`mt-1 text-xs ${highlight ? 'text-stone-300' : 'text-[#78716c]'}`} style={{ fontFamily: 'Inter, sans-serif' }}>{desc}</p>
 
             <div className="mt-5 mb-6">
-              <span className={`text-4xl font-bold ${highlight ? 'text-white' : 'text-[#1c1917]'}`} style={{ fontFamily: "'Playfair Display', serif" }}>{price}</span>
+              <span className={`text-4xl font-bold ${highlight ? 'text-white' : 'text-[#1c1917]'}`}>{price}</span>
               <span className={`text-sm ${highlight ? 'text-stone-300' : 'text-[#78716c]'}`} style={{ fontFamily: 'Inter, sans-serif' }}>{period}</span>
             </div>
 

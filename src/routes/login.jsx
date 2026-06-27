@@ -125,7 +125,7 @@ function LoginPage() {
               <ShieldCheck className="h-5 w-5" />
             </div>
           </div>
-          <h1 className="text-3xl font-bold text-[#1c1917]" style={{ fontFamily: "'Playfair Display', serif" }}>
+          <h1 className="text-3xl font-bold text-[#1c1917]">
             {activeTab === 'login' ? 'Welcome Back' : 'Create Account'}
           </h1>
           <p className="text-xs text-[#78716c] mt-1" style={{ fontFamily: 'Inter, sans-serif' }}>

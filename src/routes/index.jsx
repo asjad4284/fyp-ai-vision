@@ -43,7 +43,6 @@ function LandingPage() {
               variants={fadeUp}
               transition={{ duration: 0.6, delay: 0.1 }}
               className="text-5xl font-bold leading-[1.1] sm:text-6xl lg:text-[5rem] text-[#1c1917]"
-              style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
             >
               Detect the<br />
               <span className="underline decoration-stone-400 underline-offset-4">Undetectable.</span>
@@ -52,7 +51,6 @@ function LandingPage() {
               variants={fadeUp}
               transition={{ duration: 0.5, delay: 0.2 }}
               className="mt-8 max-w-md text-[#57534e] text-base leading-relaxed"
-              style={{ fontFamily: 'Inter, sans-serif' }}
             >
               Multi-modal deep learning evaluates synthetic images and audio with forensic-grade accuracy — producing heatmaps, waveform signatures, and instant verdicts.
             </motion.p>

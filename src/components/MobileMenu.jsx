@@ -45,7 +45,6 @@ export default function MobileMenu({ open, onClose }) {
                 <Link
                   key={label} to={href} onClick={onClose}
                   className="py-4 text-2xl font-bold text-[#1c1917] border-b border-stone-300 block"
-                  style={{ fontFamily: "'Playfair Display', serif" }}
                 >
                   <motion.span initial={{ opacity: 0, x: -16 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: i * 0.07 }} className="block">
                     {label}
@@ -55,7 +54,6 @@ export default function MobileMenu({ open, onClose }) {
                 <button
                   key={label} onClick={scrollToSection(sectionId)}
                   className="w-full text-left py-4 text-2xl font-bold text-[#1c1917] border-b border-stone-300"
-                  style={{ fontFamily: "'Playfair Display', serif" }}
                 >
                   <motion.span initial={{ opacity: 0, x: -16 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: i * 0.07 }} className="block">
                     {label}
