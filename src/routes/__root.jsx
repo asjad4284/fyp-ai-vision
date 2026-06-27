@@ -63,10 +63,9 @@ function RootLayout() {
         className={`sticky top-0 z-50 transition-all duration-300 bg-[#f4f3ee] ${scrolled ? 'border-b border-stone-300' : ''}`}
       >
         <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
-          {/* Logo */}
           <Link to="/" className="flex items-center gap-2 group">
-            <span className="text-base font-bold tracking-tight text-[#1c1917] group-hover:opacity-70 transition-opacity" style={{ fontFamily: 'Inter, sans-serif' }}>
-              DETECTAI
+            <span className="text-[22px] font-extrabold tracking-normal text-[#1c1917] group-hover:opacity-80 transition-opacity" style={{ fontFamily: 'Inter, sans-serif' }}>
+              DETECTA\
             </span>
           </Link>
 
@@ -166,7 +165,7 @@ function RootLayout() {
 
             {/* Brand col */}
             <div className="md:col-span-1 flex flex-col gap-4">
-              <span className="text-base font-bold text-white" style={{ fontFamily: 'Inter, sans-serif' }}>DETECTAI</span>
+              <span className="text-[22px] font-extrabold tracking-normal text-white" style={{ fontFamily: 'Inter, sans-serif' }}>DETECTA\</span>
               <p className="text-sm text-neutral-400 leading-relaxed max-w-xs">
                 AI-powered media forensics for a trustworthy digital world.
               </p>

@@ -35,7 +35,7 @@ export default function MobileMenu({ open, onClose }) {
           className="fixed inset-0 z-[80] flex flex-col bg-[#f4f3ee] md:hidden"
         >
           <div className="flex items-center justify-between px-6 py-5 border-b border-stone-300">
-            <span className="text-base font-bold text-[#1c1917]" style={{ fontFamily: 'Inter, sans-serif' }}>DETECTAI</span>
+            <span className="text-[22px] font-extrabold tracking-normal text-[#1c1917]" style={{ fontFamily: 'Inter, sans-serif' }}>DETECTA\</span>
             <button onClick={onClose} aria-label="Close menu" className="text-stone-500 hover:text-[#1c1917] transition-colors text-2xl leading-none">✕</button>
           </div>
 
