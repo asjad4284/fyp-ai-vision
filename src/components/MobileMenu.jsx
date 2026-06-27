@@ -1,6 +1,7 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link, useNavigate, useRouterState } from '@tanstack/react-router';
 import { useCallback } from 'react';
+import { useAuth } from './AuthContext';
 
 const LINKS = [
   { label: 'Features', sectionId: 'features', isRoute: false },
@@ -9,6 +10,7 @@ const LINKS = [
 ];
 
 export default function MobileMenu({ open, onClose }) {
+  const { currentUser, isAuthenticated, logout } = useAuth();
   const navigate = useNavigate();
   const pathname = useRouterState({ select: s => s.location.pathname });
 
@@ -64,16 +66,40 @@ export default function MobileMenu({ open, onClose }) {
           </nav>
 
           <div className="px-6 mt-auto pb-12 space-y-3">
-            <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 }}>
-              <Link to="/detect" onClick={onClose} className="btn-primary w-full justify-center">
-                Launch App
-              </Link>
-            </motion.div>
-            <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.38 }}>
-              <Link to="/pricing" onClick={onClose} className="btn-secondary w-full justify-center">
-                View Pricing
-              </Link>
-            </motion.div>
+            {isAuthenticated ? (
+              <>
+                <div className="text-center text-xs text-[#78716c] pb-2" style={{ fontFamily: 'Inter, sans-serif' }}>
+                  Signed in as <strong className="text-[#1c1917]">{currentUser?.name}</strong>
+                </div>
+                <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 }}>
+                  <Link to="/detect" onClick={onClose} className="btn-primary w-full justify-center">
+                    Go to Dashboard
+                  </Link>
+                </motion.div>
+                <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.38 }}>
+                  <button
+                    onClick={() => { logout(); onClose(); navigate({ to: '/' }); }}
+                    className="btn-secondary w-full justify-center"
+                    style={{ fontFamily: 'Inter, sans-serif' }}
+                  >
+                    Sign Out
+                  </button>
+                </motion.div>
+              </>
+            ) : (
+              <>
+                <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 }}>
+                  <Link to="/login" onClick={onClose} className="btn-primary w-full justify-center">
+                    Sign In
+                  </Link>
+                </motion.div>
+                <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.38 }}>
+                  <Link to="/detect" onClick={onClose} className="btn-secondary w-full justify-center">
+                    Launch App
+                  </Link>
+                </motion.div>
+              </>
+            )}
           </div>
         </motion.div>
       )}

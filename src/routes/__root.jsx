@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, ChevronUp } from 'lucide-react';
 import ScrollProgress from '../components/ScrollProgress';
 import MobileMenu from '../components/MobileMenu';
+import { AuthProvider, useAuth } from '../components/AuthContext';
 
 function RootLayout() {
   const [scrolled, setScrolled] = useState(false);
@@ -11,6 +12,7 @@ function RootLayout() {
   const [activeSection, setActiveSection] = useState('');
   const [showTopBtn, setShowTopBtn] = useState(false);
 
+  const { currentUser, isAuthenticated, logout } = useAuth();
   const navigate = useNavigate();
   const pathname = useRouterState({ select: s => s.location.pathname });
 
@@ -92,10 +94,30 @@ function RootLayout() {
           </nav>
 
           {/* CTA */}
-          <div className="flex items-center gap-3">
-            <Link to="/detect" className="btn-primary hidden md:inline-flex">
-              Launch App
-            </Link>
+          <div className="flex items-center gap-4">
+            {isAuthenticated ? (
+              <div className="flex items-center gap-4">
+                <span className="text-xs text-[#78716c] font-medium hidden sm:inline" style={{ fontFamily: 'Inter, sans-serif' }}>
+                  Welcome, <strong className="text-[#1c1917]">{currentUser?.name}</strong>
+                </span>
+                <button 
+                  onClick={() => { logout(); navigate({ to: '/' }); }} 
+                  className="btn-secondary text-xs cursor-pointer py-1.5 px-3 rounded-md"
+                  style={{ fontFamily: 'Inter, sans-serif' }}
+                >
+                  Sign Out
+                </button>
+              </div>
+            ) : (
+              <>
+                <Link to="/login" className="btn-secondary text-xs py-1.5 px-3 rounded-md">
+                  Sign In
+                </Link>
+                <Link to="/detect" className="btn-primary hidden md:inline-flex py-1.5 px-4 rounded-md">
+                  Launch App
+                </Link>
+              </>
+            )}
             <button
               onClick={openMobile}
               aria-label="Open menu"
@@ -199,4 +221,10 @@ function RootLayout() {
   );
 }
 
-export const Route = createRootRoute({ component: RootLayout });
+export const Route = createRootRoute({
+  component: () => (
+    <AuthProvider>
+      <RootLayout />
+    </AuthProvider>
+  )
+});

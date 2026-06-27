@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as PricingRouteImport } from './routes/pricing'
+import { Route as LoginRouteImport } from './routes/login'
 import { Route as DetectRouteImport } from './routes/detect'
 import { Route as ApiRouteImport } from './routes/api'
 import { Route as IndexRouteImport } from './routes/index'
@@ -17,6 +18,11 @@ import { Route as IndexRouteImport } from './routes/index'
 const PricingRoute = PricingRouteImport.update({
   id: '/pricing',
   path: '/pricing',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LoginRoute = LoginRouteImport.update({
+  id: '/login',
+  path: '/login',
   getParentRoute: () => rootRouteImport,
 } as any)
 const DetectRoute = DetectRouteImport.update({
@@ -39,12 +45,14 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/api': typeof ApiRoute
   '/detect': typeof DetectRoute
+  '/login': typeof LoginRoute
   '/pricing': typeof PricingRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/api': typeof ApiRoute
   '/detect': typeof DetectRoute
+  '/login': typeof LoginRoute
   '/pricing': typeof PricingRoute
 }
 export interface FileRoutesById {
@@ -52,20 +60,22 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/api': typeof ApiRoute
   '/detect': typeof DetectRoute
+  '/login': typeof LoginRoute
   '/pricing': typeof PricingRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/api' | '/detect' | '/pricing'
+  fullPaths: '/' | '/api' | '/detect' | '/login' | '/pricing'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/api' | '/detect' | '/pricing'
-  id: '__root__' | '/' | '/api' | '/detect' | '/pricing'
+  to: '/' | '/api' | '/detect' | '/login' | '/pricing'
+  id: '__root__' | '/' | '/api' | '/detect' | '/login' | '/pricing'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   ApiRoute: typeof ApiRoute
   DetectRoute: typeof DetectRoute
+  LoginRoute: typeof LoginRoute
   PricingRoute: typeof PricingRoute
 }
 
@@ -76,6 +86,13 @@ declare module '@tanstack/react-router' {
       path: '/pricing'
       fullPath: '/pricing'
       preLoaderRoute: typeof PricingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/login': {
+      id: '/login'
+      path: '/login'
+      fullPath: '/login'
+      preLoaderRoute: typeof LoginRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/detect': {
@@ -106,6 +123,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   ApiRoute: ApiRoute,
   DetectRoute: DetectRoute,
+  LoginRoute: LoginRoute,
   PricingRoute: PricingRoute,
 }
 export const routeTree = rootRouteImport

@@ -10,12 +10,7 @@ import { fadeUp, stagger } from '../animationVariants';
 
 const MARQUEE_ITEMS = ['SOC 2 Type II', '·', 'ISO 27001', '·', 'GDPR Ready', '·', 'FedRAMP', '·', 'CCPA Compliant', '·', 'Zero Trust', '·', 'End-to-End Encrypted', '·', 'HIPAA', '·'];
 
-const STATS = [
-  { to: 97,  suffix: '%',   label: 'Detection Accuracy' },
-  { to: 24,  suffix: 'ms',  label: 'Avg. Inference Time' },
-  { to: 50,  suffix: 'M+',  label: 'Files Analyzed' },
-  { to: 99,  suffix: '.9%', label: 'Uptime SLA' },
-];
+
 
 const FEATURES = [
   { icon: ScanEye,    title: 'Image Detection',     desc: 'Pixel-level heatmaps, noise residue analysis, and synthetic texture clustering for bulletproof image verification.',           span: 'md:col-span-2' },
@@ -122,32 +117,7 @@ function LandingPage() {
         </div>
       </div>
 
-      {/* ── STATS ── */}
-      <section className="mx-auto max-w-7xl px-6 py-20">
-        <motion.p
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="section-label mb-10"
-        >
-          By the Numbers
-        </motion.p>
-        <motion.div
-          variants={stagger} initial="hidden" whileInView="visible"
-          viewport={{ once: true, amount: 0.1 }}
-          className="grid grid-cols-2 gap-px md:grid-cols-4 border border-stone-300 rounded-xl overflow-hidden bg-stone-300"
-        >
-          {STATS.map(({ to, suffix, label }) => (
-            <motion.div key={label} variants={fadeUp} transition={{ duration: 0.5 }} className="bg-[#f4f3ee] p-8">
-              <p className="text-4xl font-bold text-[#1c1917]" style={{ fontFamily: "'Playfair Display', serif" }}>
-                <Counter to={to} suffix={suffix} />
-              </p>
-              <p className="mt-2 text-xs text-[#78716c] uppercase tracking-[0.2em]" style={{ fontFamily: 'Inter, sans-serif' }}>{label}</p>
-            </motion.div>
-          ))}
-        </motion.div>
-      </section>
+
 
       {/* ── HORIZONTAL SCROLL ── */}
       <HorizontalScroll />
