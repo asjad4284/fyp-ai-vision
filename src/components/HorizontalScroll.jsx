@@ -137,7 +137,7 @@ const HorizontalScroll = memo(function HorizontalScroll() {
   }, [paused, next]);
 
   return (
-    <section className="relative mx-auto max-w-7xl px-6 py-24">
+    <section className="relative mx-auto max-w-7xl px-6 py-24 overflow-hidden">
       {/* Section header */}
       <motion.div
         initial={{ opacity: 0, y: 30 }}

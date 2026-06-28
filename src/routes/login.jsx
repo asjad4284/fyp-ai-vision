@@ -83,20 +83,6 @@ function LoginPage() {
     }, 600);
   };
 
-  // Preset login helper
-  const handleQuickLogin = (email, password) => {
-    setFormData(prev => ({ ...prev, email, password }));
-    setLoading(true);
-    setTimeout(() => {
-      const res = login(email, password);
-      setLoading(false);
-      if (res.success) {
-        navigate({ to: '/detect' });
-      } else {
-        setError(res.error);
-      }
-    }, 400);
-  };
 
   return (
     <div className="bg-[#f4f3ee] min-h-[90vh] flex flex-col justify-center items-center py-12 px-6">
@@ -311,35 +297,6 @@ function LoginPage() {
         )}
       </motion.div>
 
-      {/* Demo credentials helper panel (highly useful for thesis grading) */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 0.3 }}
-        className="w-full max-w-md mt-6 bg-[#e8e6e1]/60 border border-stone-300/80 rounded-xl p-6 text-center"
-      >
-        <p className="text-xs font-bold text-[#1c1917] uppercase tracking-wider mb-3" style={{ fontFamily: 'Inter, sans-serif' }}>
-          Final Year Project - Student Accounts
-        </p>
-        <div className="grid grid-cols-2 gap-3">
-          <button
-            onClick={() => handleQuickLogin('asjad@uol.edu.pk', 'password123')}
-            className="bg-[#f4f3ee] hover:bg-stone-200 border border-stone-300 text-xs text-[#1c1917] py-2.5 px-3 rounded-md font-medium text-left transition-colors flex flex-col justify-between"
-            style={{ fontFamily: 'Inter, sans-serif' }}
-          >
-            <span className="font-semibold truncate">Asjad Sajjad</span>
-            <span className="text-[10px] text-stone-500 mt-1">asjad@uol.edu.pk</span>
-          </button>
-          <button
-            onClick={() => handleQuickLogin('motasim@uol.edu.pk', 'password123')}
-            className="bg-[#f4f3ee] hover:bg-stone-200 border border-stone-300 text-xs text-[#1c1917] py-2.5 px-3 rounded-md font-medium text-left transition-colors flex flex-col justify-between"
-            style={{ fontFamily: 'Inter, sans-serif' }}
-          >
-            <span className="font-semibold truncate">Muhammad Motasim</span>
-            <span className="text-[10px] text-stone-500 mt-1">motasim@uol.edu.pk</span>
-          </button>
-        </div>
-      </motion.div>
     </div>
   );
 }

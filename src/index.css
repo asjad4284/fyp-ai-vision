@@ -116,3 +116,12 @@ section[id] { scroll-margin-top: 72px; }
 /* ── Horizontal scroll dots ── */
 .hscroll-dot { background: #d6d3d1; }
 .hscroll-dot-active { background: #171717; }
+
+/* ── Text gradient ── */
+.text-gradient {
+  background: linear-gradient(135deg, #1c1917 0%, #57534e 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+

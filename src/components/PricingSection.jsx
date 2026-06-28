@@ -5,13 +5,13 @@ import { ArrowRight } from 'lucide-react';
 
 const PLANS = [
   {
-    name: 'Starter', price: '$49', period: '/mo',
+    name: 'Starter', price: '$9', period: '/mo',
     desc: 'Perfect for individuals and small teams.',
     features: ['1,000 files / month', 'Image detection', 'Audio detection', 'REST API access', 'Email support'],
     cta: 'Get Started', highlight: false, icon: Globe,
   },
   {
-    name: 'Pro', price: '$149', period: '/mo',
+    name: 'Pro', price: '$29', period: '/mo',
     desc: 'For teams that need power and speed.',
     features: ['10,000 files / month', 'Everything in Starter', 'Priority processing', 'Heatmap PNG exports', 'Webhook support', 'Slack & email support'],
     cta: 'Start Free Trial', highlight: true, icon: Zap,

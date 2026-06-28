@@ -423,7 +423,7 @@ function DetectPage() {
                   </div>
 
                   {/* Stats row */}
-                  <div className="grid grid-cols-3 gap-3">
+                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
                     {[
                       { icon: ScanEye,    label: 'Image Score', value: `${result.imageScore}%` },
                       { icon: AudioLines, label: 'Audio Score', value: result.audioScore ? `${result.audioScore}%` : 'N/A' },

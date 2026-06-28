@@ -3,10 +3,7 @@ import { createContext, useContext, useState, useEffect } from 'react';
 const AuthContext = createContext();
 
 // Mock pre-seeded users as defined in the FYP cover page
-const PRE_SEEDED_USERS = [
-  { userID: 'u-1', name: 'Asjad Sajjad', email: 'asjad@uol.edu.pk', password: 'password123' },
-  { userID: 'u-2', name: 'Muhammad Motasim', email: 'motasim@uol.edu.pk', password: 'password123' },
-];
+const PRE_SEEDED_USERS = [];
 
 export function AuthProvider({ children }) {
   const [currentUser, setCurrentUser] = useState(null);

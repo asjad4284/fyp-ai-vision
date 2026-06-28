@@ -161,7 +161,7 @@ function RootLayout() {
       {/* ── FOOTER ── */}
       <footer className="footer-dark pt-16 pb-10 mt-0">
         <div className="mx-auto max-w-7xl px-6">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-10 md:gap-8 pb-12 border-b border-white/10">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-8 pb-12 border-b border-white/10">
 
             {/* Brand col */}
             <div className="md:col-span-1 flex flex-col gap-4">
@@ -189,15 +189,6 @@ function RootLayout() {
               <button onClick={scrollToSection('analysis')} className="text-sm text-neutral-400 hover:text-white transition-colors text-left cursor-pointer">Analysis</button>
               <Link to="/pricing" className="text-sm text-neutral-400 hover:text-white transition-colors">Pricing</Link>
               <Link to="/detect"  className="text-sm text-neutral-400 hover:text-white transition-colors">Launch App</Link>
-            </div>
-
-            {/* Research */}
-            <div className="flex flex-col gap-3">
-              <h4 className="text-xs font-semibold uppercase tracking-widest text-neutral-400 mb-1">Research</h4>
-              <a href="#" className="text-sm text-neutral-400 hover:text-white transition-colors">Methodology</a>
-              <a href="#" className="text-sm text-neutral-400 hover:text-white transition-colors">Model Cards</a>
-              <a href="#" className="text-sm text-neutral-400 hover:text-white transition-colors">Benchmarks</a>
-              <a href="#" className="text-sm text-neutral-400 hover:text-white transition-colors">Publications</a>
             </div>
 
             {/* Legal */}
