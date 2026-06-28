@@ -63,7 +63,16 @@ function RootLayout() {
         className={`sticky top-0 z-50 transition-all duration-300 bg-[#f4f3ee] ${scrolled ? 'border-b border-stone-300' : ''}`}
       >
         <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
-          <Link to="/" className="flex items-center gap-2 group">
+          <Link
+            to="/"
+            onClick={(e) => {
+              if (pathname === '/') {
+                e.preventDefault();
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+              }
+            }}
+            className="flex items-center gap-2 group cursor-pointer"
+          >
             <span className="text-[22px] font-extrabold tracking-normal text-[#1c1917] group-hover:opacity-80 transition-opacity" style={{ fontFamily: 'Inter, sans-serif' }}>
               DETECTA\
             </span>
@@ -165,7 +174,20 @@ function RootLayout() {
 
             {/* Brand col */}
             <div className="md:col-span-1 flex flex-col gap-4">
-              <span className="text-[22px] font-extrabold tracking-normal text-white" style={{ fontFamily: 'Inter, sans-serif' }}>DETECTA\</span>
+              <Link
+                to="/"
+                onClick={(e) => {
+                  if (pathname === '/') {
+                    e.preventDefault();
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                  }
+                }}
+                className="group w-fit cursor-pointer"
+              >
+                <span className="text-[22px] font-extrabold tracking-normal text-white group-hover:opacity-80 transition-opacity" style={{ fontFamily: 'Inter, sans-serif' }}>
+                  DETECTA\
+                </span>
+              </Link>
               <p className="text-sm text-neutral-400 leading-relaxed max-w-xs">
                 AI-powered media forensics for a trustworthy digital world.
               </p>
@@ -194,10 +216,10 @@ function RootLayout() {
             {/* Legal */}
             <div className="flex flex-col gap-3">
               <h4 className="text-xs font-semibold uppercase tracking-widest text-neutral-400 mb-1">Legal</h4>
-              <a href="#" className="text-sm text-neutral-400 hover:text-white transition-colors">Privacy Policy</a>
-              <a href="#" className="text-sm text-neutral-400 hover:text-white transition-colors">Terms of Service</a>
-              <a href="#" className="text-sm text-neutral-400 hover:text-white transition-colors">Security</a>
-              <a href="#" className="text-sm text-neutral-400 hover:text-white transition-colors">Cookie Policy</a>
+              <Link to="/privacy" className="text-sm text-neutral-400 hover:text-white transition-colors">Privacy Policy</Link>
+              <Link to="/terms" className="text-sm text-neutral-400 hover:text-white transition-colors">Terms of Service</Link>
+              <Link to="/security" className="text-sm text-neutral-400 hover:text-white transition-colors">Security</Link>
+              <Link to="/cookies" className="text-sm text-neutral-400 hover:text-white transition-colors">Cookie Policy</Link>
             </div>
           </div>
 

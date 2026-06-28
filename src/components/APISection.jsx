@@ -39,15 +39,15 @@ export default function APISection() {
       <div className="grid gap-12 lg:grid-cols-2 items-center">
         <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true, amount: 0.1 }} transition={{ duration: 0.6 }}>
-          <p className="text-xs uppercase tracking-[0.3em] text-violet-400 mb-3">Developer API</p>
+          <p className="text-xs uppercase tracking-[0.3em] text-violet-600 mb-3" style={{ fontFamily: 'Inter, sans-serif' }}>Developer API</p>
           <h2 className="text-3xl font-bold text-gradient sm:text-4xl">One Request. Full Verdict.</h2>
-          <p className="mt-4 text-slate-400 leading-relaxed">
-            Drop any image or audio into a single <code className="text-violet-300 bg-violet-500/10 px-1.5 py-0.5 rounded text-xs">POST</code> request and get a JSON response with confidence scores, model attribution, and downloadable heatmap — in under 30ms.
+          <p className="mt-4 text-[#57534e] leading-relaxed" style={{ fontFamily: 'Inter, sans-serif' }}>
+            Drop any image or audio into a single <code className="text-violet-700 bg-violet-500/10 px-1.5 py-0.5 rounded text-xs">POST</code> request and get a JSON response with confidence scores, model attribution, and downloadable heatmap — in under 30ms.
           </p>
           <ul className="mt-6 space-y-3">
             {['REST & gRPC endpoints','SDKs for Python, Node, Go','Webhook callbacks on verdict','Rate limits from 100 to ∞ req/s'].map(item => (
-              <li key={item} className="flex items-center gap-2.5 text-sm text-slate-300">
-                <span className="h-1.5 w-1.5 rounded-full bg-violet-400 flex-shrink-0" />{item}
+              <li key={item} className="flex items-center gap-2.5 text-sm text-[#57534e]" style={{ fontFamily: 'Inter, sans-serif' }}>
+                <span className="h-1.5 w-1.5 rounded-full bg-violet-600 flex-shrink-0" />{item}
               </li>
             ))}
           </ul>
